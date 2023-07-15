@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router"
 import Home from '../views/Home.vue'
 import RockPaperScissor from "../views/RockPaperScissor.vue"
 import RockPaperScissorLizardSpock from "../views/RockPaperScissorLizardSpock.vue"
+import Result from '../views/Result.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 
 const router = createRouter({
@@ -17,6 +18,13 @@ const router = createRouter({
             path: '/rock-paper-scissor',
             name: 'rock-paper-scissor',
             component: RockPaperScissor,
+            children: [
+                {
+                    path: 'result',
+                    name: 'result',
+                    component: Result,
+                }, 
+            ]
         }, 
         {
             path: '/rock-paper-scissor-lizard-spock',
