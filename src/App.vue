@@ -18,7 +18,7 @@
 <style lang="scss" scoped>
   @use './assets/scss/utilities/' as *;
   .main {
-    width: min(calc(100% - 32px), rem(800));
+    width: min(calc(100% - 32px), rem(1000));
     margin-inline: auto;
     padding: rem(32) 0;
   }
