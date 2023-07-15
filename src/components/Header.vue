@@ -27,7 +27,7 @@
     max-width: rem(600);
     margin: {
       inline: auto;
-      bottom: rem(32)
+      bottom: rem(64);
     };
     border: 2px solid var(--clr-neutral-header-outline);
     border-radius: rem(12);
