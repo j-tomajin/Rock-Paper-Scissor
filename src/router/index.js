@@ -18,13 +18,11 @@ const router = createRouter({
             path: '/rock-paper-scissor',
             name: 'rock-paper-scissor',
             component: RockPaperScissor,
-            children: [
-                {
-                    path: 'result',
-                    name: 'result',
-                    component: Result,
-                }, 
-            ]
+        }, 
+        {
+            path: '/result',
+            name: 'result',
+            component: Result,
         }, 
         {
             path: '/rock-paper-scissor-lizard-spock',
