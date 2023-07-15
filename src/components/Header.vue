@@ -24,7 +24,12 @@
   @use '../assets/scss/utilities/' as *;
 
   .header {
-    border: 1px solid var(--clr-neutral-header-outline);
+    max-width: rem(600);
+    margin: {
+      inline: auto;
+      bottom: rem(32)
+    };
+    border: 2px solid var(--clr-neutral-header-outline);
     border-radius: rem(12);
     padding: rem(16);
     display: flex;
