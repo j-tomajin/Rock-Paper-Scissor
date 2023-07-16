@@ -4,6 +4,9 @@ import Home from '../views/Home.vue'
 import RockPaperScissor from "../views/RockPaperScissor.vue"
 import RockPaperScissorLizardSpock from "../views/RockPaperScissorLizardSpock.vue"
 import Result from '../views/Result.vue'
+import Leaderboard from '../views/others/Leaderboard.vue'
+import Rules from '../views/others/Rules.vue'
+import Options from '../views/others/Options.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 
 const router = createRouter({
@@ -23,6 +26,21 @@ const router = createRouter({
             path: '/result',
             name: 'result',
             component: Result,
+        }, 
+        {
+            path: '/leaderboard',
+            name: 'leaderboard',
+            component: Leaderboard,
+        }, 
+        {
+            path: '/rules',
+            name: 'Rules',
+            component: Rules,
+        }, 
+        {
+            path: '/options',
+            name: 'options',
+            component: Options,
         }, 
         {
             path: '/rock-paper-scissor-lizard-spock',
