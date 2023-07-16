@@ -47,6 +47,29 @@
         </button>
       </router-link>
     </div>
+    
+    <div class="others">
+      <router-link to="/leaderboard">
+        <button>
+          <h1>Leaderboard</h1>
+        </button>
+      </router-link>
+  
+      <!-- RULES -->
+      <router-link to="/rules">
+        <button>
+          <h1>Rules</h1>
+        </button>
+      </router-link>
+  
+      <!-- OPTIONS -->
+      <router-link to="/options">
+        <button>
+          <h1>Options</h1>
+        </button>
+      </router-link>
+    </div>
+      <!-- LEADERBOARD -->
   </div>
 </template>
 
@@ -60,6 +83,24 @@
     justify-content: center;
     gap: rem(70);
     text-align: center;
+  }
+
+  .others {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: rem(16);
+    width: 50%;
+    margin-inline: auto;
+
+    button {
+      width: 100%;
+      background-color: transparent;
+      color: var(--clr-neutral-w);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   .game {
