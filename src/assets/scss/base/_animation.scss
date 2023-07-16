@@ -27,3 +27,90 @@
     margin-top: 0;
   }
 }
+
+.btn-paper-anim {
+  padding-left: 50%;
+  animation: paper-anim 1000ms forwards 200ms;
+}
+
+@keyframes paper-anim {
+  100% {
+    padding-left: 0;
+    padding-bottom: 50px;
+  }
+}
+
+.btn-scissor-anim {
+  padding-left: 0;
+  animation: scissor-anim 1000ms forwards 200ms;
+}
+
+@keyframes scissor-anim {
+  100% {
+    padding-left: 42%;
+    padding-bottom: 50px;
+  }
+}
+
+.btn-rock-anim {
+  animation: rock-anim 1000ms forwards 200ms;
+}
+
+@keyframes rock-anim  {
+  100% {
+      padding-top: clampf(50, 375, 700, 75);
+  }
+}
+
+// SPECIAL R-P-S-L-S
+.sbtn-rock-anim {
+  animation: srock-anim 1000ms forwards 200ms;
+}
+
+@keyframes srock-anim {
+  100% {
+    padding-top: 20px;
+    padding-left: 10%;
+  }
+}
+
+.sbtn-lizard-anim {
+  animation: slizard-anim 1000ms forwards 200ms;
+}
+
+@keyframes slizard-anim {
+  100% {
+    padding-top: 20px;
+    padding-left: 30%;
+  }
+}
+
+.sbtn-spock-anim {
+  animation: sspock-anim 1000ms forwards 200ms;
+}
+
+@keyframes sspock-anim {
+  100% {
+    padding-left: 0;
+  }
+}
+
+.sbtn-paper-anim {
+  animation: spaper-anim 1000ms forwards 200ms;
+}
+
+@keyframes spaper-anim {
+  100% {
+    padding-left: 40%;
+  }
+}
+
+.sbtn-scissor-anim {
+  animation: sscissor-anim 1000ms forwards 200ms;
+}
+
+@keyframes sscissor-anim {
+  100% {
+    padding-top: 0;
+  }
+}
