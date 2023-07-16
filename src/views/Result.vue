@@ -10,10 +10,13 @@
   import rock from '../assets/images/icon-rock.svg'
   import paper from '../assets/images/icon-paper.svg'
   import scissor from '../assets/images/icon-scissors.svg'
+  import lizard from '../assets/images/icon-lizard.svg'
+  import spock from '../assets/images/icon-spock.svg'
 
   const gameStore = useGameStore()
 
   const { player, opponent, isWinner } = storeToRefs(gameStore)
+  const { resetGame } = gameStore
 
   const router = useRouter()
 </script>
@@ -24,21 +27,38 @@
 
     <div class="result-player">
 
+      <!-- PLAYER ROCK -->
       <div class="picked rock flex" v-if="player === 'rock'">
         <div class="wrapper flex">
           <img :src="rock" alt="hand-rock icon">
         </div>
       </div>
 
+      <!-- PLAYER PAPER -->
       <div class="picked paper flex" v-else-if="player === 'paper'">
         <div class="wrapper flex">
           <img :src="paper" alt="hand-paper icon">
         </div>
       </div>
 
+      <!-- PLAYER SCISSOR -->
       <div class="picked scissor flex" v-else-if="player === 'scissor'">
         <div class="wrapper flex">
           <img :src="scissor" alt="hand-scissor icon">
+        </div>
+      </div>
+
+      <!-- PLAYER LIZARD -->
+      <div class="picked lizard flex" v-else-if="player === 'lizard'">
+        <div class="wrapper flex">
+          <img :src="lizard" alt="hand-lizard icon">
+        </div>
+      </div>
+
+      <!-- PLAYER SPOCK -->
+      <div class="picked spock flex" v-else-if="player === 'spock'">
+        <div class="wrapper flex">
+          <img :src="spock" alt="hand-spock icon">
         </div>
       </div>
 
@@ -48,6 +68,7 @@
     <div class="result-opponent">
       
       <div class="image">
+        <!-- OPPONENT ROCK -->
         <div class="circle"><i class="fa-solid fa-circle"></i></div>
         <div class="picked rock flex anim" v-if="opponent === 'rock'">
           <div class="wrapper flex">
@@ -55,15 +76,31 @@
           </div>
         </div>
         
+        <!-- OPPONENT PAPER -->
         <div class="picked paper flex anim" v-else-if="opponent === 'paper'">
           <div class="wrapper flex">
             <img :src="paper" alt="hand-paper icon">
           </div>
         </div>
         
+        <!-- OPPONENT SCISSOR -->
         <div class="picked scissor flex anim" v-else-if="opponent === 'scissor'">
           <div class="wrapper flex">
             <img :src="scissor" alt="hand-scissor icon">
+          </div>
+        </div>
+
+        <!-- OPPONENT LIZARD -->
+        <div class="picked lizard flex anim" v-else-if="opponent === 'lizard'">
+          <div class="wrapper flex">
+            <img :src="lizard" alt="lizard icon">
+          </div>
+        </div>
+
+        <!-- OPPONENT SPOCK -->
+        <div class="picked spock flex anim" v-else-if="opponent === 'spock'">
+          <div class="wrapper flex">
+            <img :src="spock" alt="hand-spock icon">
           </div>
         </div>
       </div>
@@ -91,6 +128,7 @@
             msg="Main Menu"
             bg_color="var(--clr-neutral-w)"
             class="btn"
+            @btn-click="resetGame"
           />
         </router-link>
       </div>
@@ -199,5 +237,13 @@
   }
   .scissor {
     background-image: var(--clr-primary-scissor);
+  }
+  
+  .lizard {
+    background-image: var(--clr-primary-lizard);
+  }
+
+  .spock {
+    background-image: var(--clr-primary-spock);
   }
 </style>
