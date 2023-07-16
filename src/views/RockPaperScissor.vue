@@ -32,7 +32,7 @@
       <img :src="triangle" alt="triangle background" class="triangle">
 
       <!-- PAPER -->
-      <router-link :to="{name: 'result'}" class="game-paper">
+      <router-link :to="{name: 'result'}" class="game-paper btn-paper-anim">
         <button class="btn paper" @click="classicGame('paper')">
           <div class="wrapper">
             <img :src="paper" alt="">
@@ -41,7 +41,7 @@
       </router-link>
       
       <!-- SCISSOR -->
-      <router-link :to="{name: 'result'}" class="game-scissor">
+      <router-link :to="{name: 'result'}" class="game-scissor btn-scissor-anim">
         <button class="btn scissor" @click="classicGame('scissor')">
           <div class="wrapper">
             <img :src="scissor" alt="">
@@ -50,7 +50,7 @@
       </router-link>
       
       <!-- ROCK -->
-      <router-link :to="{name: 'result'}" class="game-rock">
+      <router-link :to="{name: 'result'}" class="game-rock btn-rock-anim">
         <button class="btn rock" @click="classicGame('rock')">
           <div class="wrapper">
             <img :src="rock" alt="">
@@ -69,7 +69,7 @@
     margin-right: auto;
     position: absolute;
     top: -10%;
-    left: -10%;
+    left: clampf(0, 550, 780, -50);
   }
   
   .box {
@@ -91,14 +91,14 @@
     grid-template-columns: repeat(2, 1fr);
 
     &-paper {
-      padding-bottom: 50px;
+      // padding-bottom: 50px;
+      // margin-left: auto;
     }
     &-scissor {
-      margin-inline-start: auto;
-      padding-bottom: 50px;
+      // margin-inline-start: auto;
+      // padding-bottom: 50px;
     }
     &-rock {
-      padding-top: clampf(50, 375, 700, 75);
       grid-column: 1 / 3;
       margin-inline: auto
     }
