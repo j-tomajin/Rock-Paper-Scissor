@@ -5,7 +5,7 @@
   --clr-primary-paper: linear-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
   --clr-primary-rock: linear-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
   --clr-primary-lizard: linear-gradient(hsl(261, 73%, 60%), hsl(261, 72%, 63%));
-  --clr-primary-cyan: linear-gradient(hsl(189, 59%, 53%), hsl(189, 58%, 57%));
+  --clr-primary-spock: linear-gradient(hsl(189, 59%, 53%), hsl(189, 58%, 57%));
   --clr-neutral-text: hsl(229, 25%, 31%);
   --clr-neutral-score: hsl(229, 64%, 46%);
   --clr-neutral-header-outline: hsl(217, 16%, 45%);
@@ -179,5 +179,83 @@ a:not([class]) {
   }
   100% {
     margin-top: 0;
+  }
+}
+.btn-paper-anim {
+  padding-left: 50%;
+  animation: paper-anim 1000ms forwards 200ms;
+}
+
+@keyframes paper-anim {
+  100% {
+    padding-left: 0;
+    padding-bottom: 50px;
+  }
+}
+.btn-scissor-anim {
+  padding-left: 0;
+  animation: scissor-anim 1000ms forwards 200ms;
+}
+
+@keyframes scissor-anim {
+  100% {
+    padding-left: 42%;
+    padding-bottom: 50px;
+  }
+}
+.btn-rock-anim {
+  animation: rock-anim 1000ms forwards 200ms;
+}
+
+@keyframes rock-anim {
+  100% {
+    padding-top: clamp(3.125rem, 1.3221153846rem + 7.6923076923vw, 4.6875rem);
+  }
+}
+.sbtn-rock-anim {
+  animation: srock-anim 1000ms forwards 200ms;
+}
+
+@keyframes srock-anim {
+  100% {
+    padding-top: 20px;
+    padding-left: 10%;
+  }
+}
+.sbtn-lizard-anim {
+  animation: slizard-anim 1000ms forwards 200ms;
+}
+
+@keyframes slizard-anim {
+  100% {
+    padding-top: 20px;
+    padding-left: 30%;
+  }
+}
+.sbtn-spock-anim {
+  animation: sspock-anim 1000ms forwards 200ms;
+}
+
+@keyframes sspock-anim {
+  100% {
+    padding-left: 0;
+  }
+}
+.sbtn-paper-anim {
+  animation: spaper-anim 1000ms forwards 200ms;
+}
+
+@keyframes spaper-anim {
+  100% {
+    padding-left: 40%;
+  }
+}
+.sbtn-scissor-anim {
+  animation: sscissor-anim 1000ms forwards 200ms;
+}
+
+@keyframes sscissor-anim {
+  100% {
+    padding-top: 0;
   }
 }/*# sourceMappingURL=style.css.map */
