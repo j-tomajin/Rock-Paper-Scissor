@@ -11,11 +11,11 @@
 
 <template>
   <h1 class="head">OPTIONS</h1>
-  <div>
-    <h1>This features is not implemented yet...</h1>
-  </div>
+  <button @click="router.back()" class="-gbtn">Back</button>
 
-  <button @click="router.back()">Back</button>
+  <div>
+    <h1>This feature is not implemented yet...</h1>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -27,6 +27,11 @@
     padding-block: rem(12);
     border-radius: rem(8);
   }
+
+  button {
+    margin-top: rem(16);
+  }
+
   h1 {
     text-align: center;
   }

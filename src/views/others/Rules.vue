@@ -11,11 +11,11 @@ export default {
 
 <template>
   <h1 class="head">RULES</h1>
+  <button @click="router.back()" class="-gbtn">Back</button>
+
   <div>
-    <h1>This features is not implemented yet...</h1>
+    <h1>This feature is not implemented yet...</h1>
   </div>
-  
-  <button @click="router.back()">Back</button>
 </template>
 
 <style lang="scss" scoped>
@@ -26,6 +26,10 @@ export default {
     border: 1px solid var(--clr-neutral-w);
     padding-block: rem(12);
     border-radius: rem(8);
+  }
+
+  button {
+    margin-top: rem(16);
   }
 
   h1 {
