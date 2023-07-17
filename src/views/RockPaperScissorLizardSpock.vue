@@ -10,6 +10,10 @@
   import lizard from '../assets/images/icon-lizard.svg'
   import spock from '../assets/images/icon-spock.svg'
   import pentagon from '../assets/images/bg-pentagon.svg'
+  // close
+  import close from '../assets/images/icon-close.svg'
+  // rules
+  import rpsRules from '../assets/images/image-rules-bonus.svg'
 
   const router = useRouter()
 
@@ -21,9 +25,9 @@
 <template>
   <div>
     <Header />
-    <button @click="router.back()" class="-gbtn">
+    <!-- <button @click="router.back()" class="-gbtn back-btn">
       <i class="fa-solid fa-arrow-left"></i>
-    </button>
+    </button> -->
     <!-- 
         ----- CHORE ------
         * IF THE USER IS CURRENTLY PLAYING IN EITHER MODE AND
@@ -31,7 +35,6 @@
         * THERE WILL BE POP UP ASKING THE USER IF THEY ARE SURE ABOUT THAT
         * IF YES, THEN THE SCORE/PLAYER/OPPONENT PICK WILL RESET
      -->
-    <h1>ROCK PAPER SCISSOR LIZARD SPOCK</h1>
   </div>
 
   <!-- from rps component -->
@@ -39,7 +42,7 @@
 
   <!-- Rock Paper Scissor Buttons -->
     <div class="game">
-      <button @click="router.back()" class="-gbtn">
+      <button @click="router.back()" class="-gbtn back-btn">
         <i class="fa-solid fa-arrow-left"></i>
       </button>
 
@@ -90,14 +93,41 @@
         </button>
       </router-link>
     </div>
+    <button class="-gbtn rules-btn" @click="$refs.dialog.showModal()">
+      Rules
+    </button>
   </div>
+  <dialog ref="dialog" class="dialog">
+    <button @click="$refs.dialog.close()" class="close-btn">
+      <img :src="close" alt="close-icon">
+    </button>
+    <img :src="rpsRules" alt="Rock Paper Scissors Rules">
+  </dialog>
 </template>
 
 <style lang="scss" scoped>
   @use '../assets/scss/utilities/' as *;
 
-  .-gbtn {
-    font-size: rem(24);
+  .dialog {
+    border: none;
+    background-color: var(--clr-background-rules);
+    position: relative;
+    padding: rem(100) rem(32);
+    border-radius: rem(8);
+  }
+  .close-btn {
+    position: absolute;
+    top: rem(24);
+    right: rem(24);
+  }
+
+  .rules-btn {
+    margin-top: rem(50);
+  }
+
+  .back-btn {
+    font-size: rem(16);
+    padding-block: rem(6);
     margin-right: auto;
     position: absolute;
     top: -10%;
