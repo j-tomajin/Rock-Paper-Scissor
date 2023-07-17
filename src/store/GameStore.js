@@ -64,11 +64,6 @@ export const useGameStore = defineStore('gameStore', {
           // game over
         }
       } 
-
-      console.log(this.gamemode)
-      console.log(this.player)
-      console.log(this.opponent)
-      console.log(this.isWinner)
     },
 
     specialGame(pick) {
@@ -80,6 +75,7 @@ export const useGameStore = defineStore('gameStore', {
         if(this.opponent === 'paper' || this.opponent === 'lizard') {
           // winner
           this.isWinner = true
+          this.score += 1
         } else if(this.opponent === 'spock' || this.opponent === 'rock') {
           // lose
           this.isWinner = false
@@ -91,6 +87,7 @@ export const useGameStore = defineStore('gameStore', {
         if(this.opponent === 'scissor' || this.opponent === 'rock') {
           // winner
           this.isWinner = true
+          this.score += 1
         } else if(this.opponent === 'lizard' || this.opponent === 'paper') {
           // lose
           this.isWinner = false
@@ -102,6 +99,7 @@ export const useGameStore = defineStore('gameStore', {
         if(this.opponent === 'spock' || this.opponent === 'rock') {
           // winner
           this.isWinner = true
+          this.score += 1
         } else if(this.opponent === 'lizard' || this.opponent === 'scissor') {
           // lose
           this.isWinner = false
@@ -112,6 +110,7 @@ export const useGameStore = defineStore('gameStore', {
         if(this.opponent === 'spock' || this.opponent === 'paper') {
           // winner
           this.isWinner = true
+          this.score += 1
         } else if(this.opponent === 'scissor' || this.opponent === 'rock') {
           // lose
           this.isWinner = false
@@ -123,6 +122,7 @@ export const useGameStore = defineStore('gameStore', {
         if(this.opponent === 'lizard' || this.opponent === 'scissor') {
           // winner
           this.isWinner = true
+          this.score += 1
         } else if(this.opponent === 'spock' || this.opponent === 'paper') {
           // lose
           this.isWinner = false
