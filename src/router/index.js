@@ -4,9 +4,14 @@ import Home from '../views/Home.vue'
 import RockPaperScissor from "../views/RockPaperScissor.vue"
 import RockPaperScissorLizardSpock from "../views/RockPaperScissorLizardSpock.vue"
 import Result from '../views/Result.vue'
+import HighScore from '../views/others/HighScore.vue'
+
+// others
 import Leaderboard from '../views/others/Leaderboard.vue'
 import Rules from '../views/others/Rules.vue'
 import Options from '../views/others/Options.vue'
+
+// not found
 import NotFoundView from '../views/NotFoundView.vue'
 
 const router = createRouter({
@@ -23,9 +28,21 @@ const router = createRouter({
             component: RockPaperScissor,
         }, 
         {
+            path: '/rock-paper-scissor-lizard-spock',
+            name: 'bonus',
+            component: RockPaperScissorLizardSpock,
+        }, 
+        {
             path: '/result',
             name: 'result',
             component: Result,
+            children: [
+                {
+                    path: 'high-score',
+                    name: 'setHighScore',
+                    component: HighScore
+                }
+            ]
         }, 
         {
             path: '/leaderboard',
@@ -41,11 +58,6 @@ const router = createRouter({
             path: '/options',
             name: 'options',
             component: Options,
-        }, 
-        {
-            path: '/rock-paper-scissor-lizard-spock',
-            name: 'bonus',
-            component: RockPaperScissorLizardSpock,
         }, 
         {
           path: '/:patchMatch(.*)*',
