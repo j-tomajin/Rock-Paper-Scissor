@@ -3,4 +3,13 @@
 .-gbtn {
   background-color: transparent;
   color: var(--clr-neutral-w);
+  border: 1px solid var(--clr-neutral-w);
+  padding: rem(12) rem(24);
+  border-radius: rem(8);
+  transition: all 200ms ease-in;
+
+  &:hover {
+    background-color: var(--clr-neutral-w);
+    color: var(--clr-neutral-text);
+  }
 }
