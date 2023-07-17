@@ -40,8 +40,8 @@
               <i class="fa-solid fa-hand-back-fist"></i>
               <i class="fa-solid fa-hand"></i>
               <i class="fa-solid fa-hand-peace"></i>
-              <img :src="lizard" alt="lizard">
-              <i class="fa-solid fa-hand-spock"></i>
+              <img :src="lizard" alt="lizard" class="lizard">
+              <i class="fa-solid fa-hand-spock spock"></i>
             </div>
           </div>
         </button>
@@ -151,6 +151,13 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: rem(10);
+
+      .lizard {
+        grid-column: 1 / 3;
+      }
+      .spock {
+        grid-column: 3 / 4;
+      }
     }
   }
 </style>
