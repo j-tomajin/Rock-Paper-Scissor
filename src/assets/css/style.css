@@ -10,8 +10,10 @@
   --clr-neutral-score: hsl(229, 64%, 46%);
   --clr-neutral-header-outline: hsl(217, 16%, 45%);
   --clr-neutral-w: hsl(0, 0%, 100%);
+  --clr-neutral-red: hsl(349, 70%, 56%);
   --clr-background-main: hsl(238, 48%, 15%);
   --clr-background-winner: radial-gradient(#1f3756, #141539);
+  --clr-background-rules: hsl(0, 10%, 94%);
 }
 
 /* Set core root defaults */
@@ -153,6 +155,14 @@ a:not([class]) {
 .-gbtn {
   background-color: transparent;
   color: var(--clr-neutral-w);
+  border: 1px solid var(--clr-neutral-w);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 200ms ease-in;
+}
+.-gbtn:hover {
+  background-color: var(--clr-neutral-w);
+  color: var(--clr-neutral-text);
 }
 
 .anim {
