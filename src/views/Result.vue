@@ -23,6 +23,8 @@
 
 <template>
   <Header />
+  
+  <RouterView />
   <section class="result">
 
     <div class="result-player">
@@ -123,12 +125,11 @@
           @btn-click="router.back()"
           class="btn"
         />
-        <router-link :to="{name: 'home'}" v-else-if="isWinner === false">
+        <router-link :to="{name: 'setHighScore'}" v-else-if="isWinner === false">
           <Button 
-            msg="Main Menu"
+            msg="Play Again"
             bg_color="var(--clr-neutral-w)"
             class="btn"
-            @btn-click="resetGame"
           />
         </router-link>
       </div>
@@ -173,6 +174,10 @@
     border-radius: rem(6);
     text-transform: uppercase;
     color: var(--clr-neutral-text);
+
+    &:hover {
+      color: var(--clr-neutral-red);
+    }
   }
 
   .result {
@@ -199,6 +204,19 @@
       height: 120px;
       width: 100%;
       padding-top: rem(10);
+    }
+
+    @include breakpointMin(medium-screen) {
+      grid-template-columns: repeat(3, 1fr);
+
+      &-opponent {
+        grid-column: 3 / 4;
+      }
+
+      &-text {
+        grid-column: 2 / 3;
+        grid-row: 1;
+      }
     }
   }
 
