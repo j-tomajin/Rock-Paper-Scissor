@@ -10,7 +10,7 @@
       return { resetGame }
     },
     mounted: function() {
-      this.$refs.dialog.show()
+      this.$refs.dialog.showModal()
     }
   }
 </script>
