@@ -11,6 +11,10 @@
   import paper from '../assets/images/icon-paper.svg'
   import scissor from '../assets/images/icon-scissors.svg'
   import triangle from '../assets/images/bg-triangle.svg'
+  // close
+  import close from '../assets/images/icon-close.svg'
+  // rules
+  import rpsRules from '../assets/images/image-rules.svg'
   
   const gameStore = useGameStore()
 
@@ -26,7 +30,7 @@
 
     <!-- Rock Paper Scissor Buttons -->
     <div class="game">
-      <button @click="router.back()" class="-gbtn">
+      <button @click="router.back()" class="-gbtn back-btn">
         <i class="fa-solid fa-arrow-left"></i>
       </button>
       <img :src="triangle" alt="triangle background" class="triangle">
@@ -58,18 +62,45 @@
         </button>
       </router-link>
     </div>
+    <button class="-gbtn rules-btn" @click="$refs.dialog.showModal()">
+      Rules
+    </button>
   </div>
+  <dialog ref="dialog" class="dialog">
+    <button @click="$refs.dialog.close()" class="close-btn">
+      <img :src="close" alt="close-icon">
+    </button>
+    <img :src="rpsRules" alt="Rock Paper Scissors Rules">
+  </dialog>
 </template>
 
 <style lang="scss" scoped>
   @use '../assets/scss/utilities/' as *;
 
-  .-gbtn {
-    font-size: rem(24);
+  .dialog {
+    border: none;
+    background-color: var(--clr-background-rules);
+    position: relative;
+    padding: rem(100) rem(32);
+    border-radius: rem(8);
+  }
+  .close-btn {
+    position: absolute;
+    top: rem(24);
+    right: rem(24);
+  }
+
+  .back-btn {
+    font-size: rem(16);
+    padding-block: rem(6);
     margin-right: auto;
     position: absolute;
     top: -10%;
     left: clampf(0, 550, 780, -50);
+  }
+
+  .rules-btn {
+    margin-top: rem(50);
   }
   
   .box {
