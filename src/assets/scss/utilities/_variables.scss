@@ -13,9 +13,11 @@ $colors: (
       score: hsl(229, 64%, 46%),
       header-outline: hsl(217, 16%, 45%),
       w: hsl(0, 0%, 100%),
+      red: hsl(349, 70%, 56%),
     ),
     background: (
       main: hsl(238, 48%, 15%),
-      winner: radial-gradient(#1f3756, #141539)
+      winner: radial-gradient(#1f3756, #141539),
+      rules: hsl(0, 10%, 94%),
     )
 )
