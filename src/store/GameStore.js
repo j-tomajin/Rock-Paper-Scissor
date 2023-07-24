@@ -15,47 +15,47 @@ export const useGameStore = defineStore('gameStore', {
         {
           username: 'Jeck',
           gamemode: 'classic',
-          score: 10
+          score: 1
         },
         {
           username: 'JPT',
           gamemode: 'classic',
-          score: 9
+          score: 1
         },
         {
           username: 'JTomajin',
           gamemode: 'classic',
-          score: 8
+          score: 1
         },
         {
           username: 'Jintoma',
           gamemode: 'classic',
-          score: 7
+          score: 1
         },
         {
           username: 'jeckjeckjeck',
           gamemode: 'classic',
-          score: 6
+          score: 1
         },
         {
           username: 'Is Handsome',
           gamemode: 'classic',
-          score: 5
+          score: 1
         },
         {
           username: 'ur mum',
           gamemode: 'classic',
-          score: 4
+          score: 1
         },
         {
           username: 'asdfghjkl',
           gamemode: 'classic',
-          score: 3
+          score: 1
         },
         {
           username: 'u nub',
           gamemode: 'classic',
-          score: 2
+          score: 1
         },
         {
           username: 'jkjk',
@@ -70,47 +70,47 @@ export const useGameStore = defineStore('gameStore', {
         {
           username: 'Jeck',
           gamemode: 'special',
-          score: 10
+          score: 1
         },
         {
           username: 'JPT',
           gamemode: 'special',
-          score: 9
+          score: 1
         },
         {
           username: 'JTomajin',
           gamemode: 'special',
-          score: 8
+          score: 1
         },
         {
           username: 'Jintoma',
           gamemode: 'special',
-          score: 7
+          score: 1
         },
         {
           username: 'jeckjeckjeck',
           gamemode: 'special',
-          score: 6
+          score: 1
         },
         {
           username: 'Is Handsome',
           gamemode: 'special',
-          score: 5
+          score: 1
         },
         {
           username: 'ur mum',
           gamemode: 'special',
-          score: 4
+          score: 1
         },
         {
           username: 'asdfghjkl',
           gamemode: 'special',
-          score: 3
+          score: 1
         },
         {
           username: 'u nub',
           gamemode: 'special',
-          score: 2
+          score: 1
         },
         {
           username: 'jkjk',
@@ -118,6 +118,7 @@ export const useGameStore = defineStore('gameStore', {
           score: 1
         },
       ]),
+      overallHighScore: ref([])
     }
   },
   getters: {
@@ -241,16 +242,10 @@ export const useGameStore = defineStore('gameStore', {
           this.isWinner = ''
         }
       }
-
-      console.log(this.gamemode) 
-      console.log(this.player)
-      console.log(this.opponent)
-      console.log(this.isWinner)
     },
 
     classicGameOpponentPick() {
       const num = Math.floor(Math.random() * 3) + 1
-      console.log(num)
 
       if(num === 1) {
         this.opponent = 'rock'
@@ -263,7 +258,6 @@ export const useGameStore = defineStore('gameStore', {
 
     specialGameOpponentPick() {
       const num = Math.floor(Math.random() * 5) + 1
-      console.log(num)
 
       if(num === 1) {
         this.opponent = 'scissor'
@@ -287,26 +281,56 @@ export const useGameStore = defineStore('gameStore', {
     },
 
     highScoreSort() {
+      this.setOverallHighScore()
       if(this.gamemode === 'classic') {
-        this.classicHighScore.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
+        this.classicHighScore.sort((a, b) => parseFloat(b.score) - parseFloat(a.score))
   
         if(this.classicHighScore.length > 10) {
           this.classicHighScore = this.classicHighScore.splice(0, 10)
         }
       } else if(this.gamemode === 'special') {
-        this.specialHighScore.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
-  
+        this.specialHighScore.sort((a, b) => parseFloat(b.score) - parseFloat(a.score))
+        
         if(this.specialHighScore.length > 10) {
           this.specialHighScore = this.specialHighScore.splice(0, 10)
         }
       }
-
     }, 
+
+    setOverallHighScore() {
+      if(this.overallHighScore.length === 0) {
+        return this.overallHighScore = [...this.classicHighScore, ...this.specialHighScore]
+      }
+
+      if(this.gamemode === 'classic') {
+        for (let i = 0; i < this.overallHighScore.length; i++) {
+          if (!this.areObjectsEqual(this.overallHighScore[i], this.classicHighScore[i])) {
+            // If the objects are not equal, push the new object to the overallHighScore array
+            this.overallHighScore.push(this.classicHighScore[i])
+          }
+        }
+      } else if(this.gamemode === 'special') {
+        for (let i = 0; i < this.overallHighScore.length; i++) {
+          if (!this.areObjectsEqual(this.overallHighScore[i], this.specialHighScore[i])) {
+            // If the objects are not equal, push the new object to the overallHighScore array
+            this.overallHighScore.push(this.specialHighScore[i])
+          }
+        }
+      }
+
+
+      this.overallHighScore.sort((a, b) => parseFloat(b.score) - parseFloat(a.score))
+      this.overallHighScore = this.overallHighScore.splice(0, 10)
+    },
+
+    areObjectsEqual(obj1, obj2) {
+      return JSON.stringify(obj1) === JSON.stringify(obj2)
+    },
 
     setHighScore(newScore) {
       if(this.gamemode === 'classic') {
         this.classicHighScore = [...this.classicHighScore, newScore]
-        this.highScoreSort() 
+        this.highScoreSort()
       } else if(this.gamemode === 'special') {
         this.specialHighScore = [...this.specialHighScore, newScore]
         this.highScoreSort() 
@@ -316,7 +340,6 @@ export const useGameStore = defineStore('gameStore', {
     checkIfHighScore() {
       if(this.gamemode === 'classic') {
         let minHighScore = Math.min(...this.classicHighScore.map(score => score.score))
-        console.log(minHighScore)
         
         if(this.score > minHighScore) {
           this.isNewHighScoreClassic = true
@@ -325,7 +348,6 @@ export const useGameStore = defineStore('gameStore', {
         }
       } else if(this.gamemode === 'special') {
         let minHighScore = Math.min(...this.specialHighScore.map(score => score.score))
-        console.log(minHighScore)
         
         if(this.score > minHighScore) {
           this.isNewHighScoreClassic = true
@@ -336,5 +358,15 @@ export const useGameStore = defineStore('gameStore', {
 
 
     },
+
+    setValue() {
+      localStorage.setItem('classic-hs', JSON.stringify(this.classicHighScore))
+      localStorage.setItem('special-hs', JSON.stringify(this.specialHighScore))
+    },
+
+    getValue() {
+      this.classicHighScore = JSON.parse(localStorage.getItem('classic-hs')) 
+      this.specialHighScore = JSON.parse(localStorage.getItem('special-hs'))
+    }
   }
 })
