@@ -6,13 +6,14 @@
   
   const gameStore = useGameStore()
 
-  const { gamemode, classicHighScore, specialHighScore } = storeToRefs(gameStore)
-  const { resetGame } = gameStore
+  const { gamemode, classicHighScore, specialHighScore, overallHighScore } = storeToRefs(gameStore)
+  const { resetGame, getValue } = gameStore
 
   let mode = ref('all')
 
   onMounted(() => { 
     mode.value = route.query.mode || ''
+    getValue()
   })
   
   const route = useRoute()
@@ -46,9 +47,26 @@
       <h1>Score</h1>
     </div>
 
+    <!-- OVERALL HIGH SCORES -->
+    <div v-if="gamemode === 'all'">
+      <div class="scores grid" v-for="(oscore, index) in overallHighScore" :key="index" >
+        <div class="username">
+          <p>{{ oscore.username }}</p>
+        </div> 
+
+        <div class="gamemode">
+          <p>{{ oscore.gamemode }}</p>
+        </div> 
+
+        <div class="score">
+          <p>{{ oscore.score }}</p>
+        </div> 
+      </div>
+    </div>
+
     <!-- CLASSIC HIGH SCORES -->
-    <div v-if="gamemode === 'classic'">
-      <div class="scores grid" v-for="(hscore, index) in classicHighScore" :key="index" >
+    <div v-else-if="gamemode === 'classic'">
+      <div class="scores grid" v-for="(hscore, i) in classicHighScore" :key="i" >
         <div class="username">
           <p>{{ hscore.username }}</p>
         </div>
@@ -65,7 +83,7 @@
 
     <!-- SPECIAL HIGH SCORES -->
     <div v-else-if="gamemode === 'special'">
-      <div class="scores grid" v-for="(hscore, index) in specialHighScore" :key="index" >
+      <div class="scores grid" v-for="(hscore, ii) in specialHighScore" :key="ii" >
       <div class="username">
         <p>{{ hscore.username }}</p>
       </div>
