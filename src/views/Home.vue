@@ -1,5 +1,5 @@
 <script setup>
-  import { RouterLink } from 'vue-router'
+  import { RouterLink, useRouter } from 'vue-router'
   import { storeToRefs } from 'pinia'
   import { useGameStore } from '../store/GameStore'
   
@@ -10,15 +10,17 @@
   const gameStore = useGameStore()
  
   const { gamemode } = storeToRefs(gameStore)
+  const { setGameMode, highScoreSort } = gameStore
 </script>
 
 <template>
   <div class="main">
     <h1>Main Menu</h1>
     <div class="game">
-      <!-- RPS -->
+
+      <!-- CLASSIC -->
       <router-link :to="{name: 'rock-paper-scissor'}" class="mode">
-        <button class="btn" @click="gamemode='classic'">
+        <button class="btn" @click="setGameMode('classic')">
           <img :src="rps" alt="text='rock-paper-scissor'">
           <div class="text">
             <h2 class="head">CLASSIC</h2>
@@ -30,9 +32,10 @@
           </div>
         </button>
       </router-link>
+
       <!-- SPECIAL -->
       <router-link :to="{name: 'bonus'}" class="mode">
-        <button class="btn" @click="gamemode='special'">
+        <button class="btn" @click="setGameMode('special')">
           <img :src="rpsls" alt="text='rock-paper-scissor-lizard-spock'">
           <div class="text">
             <h2 class="head">SPECIAL</h2>
@@ -49,8 +52,9 @@
     </div>
     
     <div class="others">
-      <router-link to="/leaderboard">
-        <button>
+      <!-- LEADERBOARD -->
+      <router-link :to="{name: 'leaderboard'}">
+        <button @click="highScoreSort(), setGameMode('all')">
           <h1>Leaderboard</h1>
         </button>
       </router-link>
