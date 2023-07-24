@@ -1,7 +1,18 @@
 <script>
   import { RouterView } from 'vue-router'
+  import { useGameStore } from './store/GameStore';
+
   export default {
-    name: 'App',
+    setup() {
+      const gameStore = useGameStore()
+
+      const { getValue, setValue } = gameStore
+
+      return { getValue, setValue }
+    },
+    created() {
+      this.setValue()
+    }
   }
 </script>
 
