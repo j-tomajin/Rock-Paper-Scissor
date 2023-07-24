@@ -16,7 +16,7 @@
   const gameStore = useGameStore()
 
   const { player, opponent, isWinner } = storeToRefs(gameStore)
-  const { resetGame } = gameStore
+  const { checkIfHighScore } = gameStore
 
   const router = useRouter()
 </script>
@@ -130,6 +130,7 @@
             msg="Play Again"
             bg_color="var(--clr-neutral-w)"
             class="btn"
+            @btn-click="checkIfHighScore()"
           />
         </router-link>
       </div>
