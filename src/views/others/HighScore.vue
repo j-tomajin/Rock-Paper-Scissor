@@ -10,10 +10,10 @@
       const gameStore = useGameStore()
 
       const { gamemode, score, isNewHighScoreClassic } = storeToRefs(gameStore)
-      const { resetGame, setHighScore, setGameMode } = gameStore
+      const { resetGame, setHighScore, setGameMode, setValue } = gameStore
 
       return { 
-        resetGame, gamemode, score, setHighScore, isNewHighScoreClassic, setGameMode
+        resetGame, gamemode, score, setHighScore, isNewHighScoreClassic, setGameMode, setValue
       }
     },
     mounted: function() {
@@ -36,7 +36,7 @@
           score: this.score
         }
 
-        this.setHighScore(score)
+        this.setHighScore(score) 
       }
     }
   }
@@ -68,7 +68,7 @@
           </div>
 
           <router-link :to="{name: 'leaderboard'}">
-            <button @click="$refs.dialog.close(), submitNewHighScore(), setGameMode(gamemode)" class="-gbtn">Continue</button>
+            <button @click="$refs.dialog.close(), submitNewHighScore(), setGameMode(gamemode), setValue()" class="-gbtn">Continue</button>
           </router-link>
         </fieldset>
       </form>
