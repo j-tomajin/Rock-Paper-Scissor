@@ -10,7 +10,7 @@
   const gameStore = useGameStore()
  
   const { gamemode } = storeToRefs(gameStore)
-  const { setGameMode, highScoreSort } = gameStore
+  const { setGameMode, highScoreSort, setOverallHighScore } = gameStore
 </script>
 
 <template>
@@ -54,7 +54,7 @@
     <div class="others">
       <!-- LEADERBOARD -->
       <router-link :to="{name: 'leaderboard'}">
-        <button @click="highScoreSort(), setGameMode('all')">
+        <button @click="highScoreSort(), setGameMode('all'), setOverallHighScore()">
           <h1>Leaderboard</h1>
         </button>
       </router-link>
